@@ -1,0 +1,4 @@
+/mnt/nvme10/joseph_ufl/TurboQuant-Tenstorrent/build/CMakeFiles/turboquant_host.dir
+/mnt/nvme10/joseph_ufl/TurboQuant-Tenstorrent/build/CMakeFiles/turboquant_launcher.dir
+/mnt/nvme10/joseph_ufl/TurboQuant-Tenstorrent/build/CMakeFiles/edit_cache.dir
+/mnt/nvme10/joseph_ufl/TurboQuant-Tenstorrent/build/CMakeFiles/rebuild_cache.dir

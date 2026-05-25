@@ -1,0 +1,60 @@
+- kernel:
+    watcher_kernel_id: 3
+    name: cq_dispatch_subordinate
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_dispatch_subordinate/18386209704538731453/
+    source: tt_metal/impl/dispatch/kernels/cq_dispatch_subordinate.cpp
+    program_id: 0
+- kernel:
+    watcher_kernel_id: 2
+    name: cq_dispatch
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_dispatch/10262273362550777157/
+    source: tt_metal/impl/dispatch/kernels/cq_dispatch.cpp
+    program_id: 0
+- kernel:
+    watcher_kernel_id: 1
+    name: cq_prefetch
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_prefetch/17973116481447528190/
+    source: tt_metal/impl/dispatch/kernels/cq_prefetch.cpp
+    program_id: 0
+- kernel:
+    watcher_kernel_id: 5
+    name: stage_dump_writer
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/5267467619798701858/
+    source: kernels/dataflow/stage_dump_writer.cpp
+    program_id: 1
+- kernel:
+    watcher_kernel_id: 4
+    name: rotation_kernel
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/rotation_kernel/2898742065668383759/
+    source: kernels/rotation_kernel.cpp
+    program_id: 1
+- kernel:
+    watcher_kernel_id: 7
+    name: stage_dump_writer
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/6367079339746696211/
+    source: kernels/dataflow/stage_dump_writer.cpp
+    program_id: 3
+- kernel:
+    watcher_kernel_id: 6
+    name: polarquant_kernel
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_kernel/11394414237666387434/
+    source: kernels/polarquant_kernel.cpp
+    program_id: 3
+- kernel:
+    watcher_kernel_id: 8
+    name: polarquant_kernel
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_kernel/11394414237666387434/
+    source: kernels/polarquant_kernel.cpp
+    program_id: 5
+- kernel:
+    watcher_kernel_id: 9
+    name: stage_dump_writer
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/1110626334448457008/
+    source: kernels/dataflow/stage_dump_writer.cpp
+    program_id: 5
+- kernel:
+    watcher_kernel_id: 10
+    name: qjl_kernel
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/qjl_kernel/13302935338812007575/
+    source: kernels/qjl_kernel.cpp
+    program_id: 7

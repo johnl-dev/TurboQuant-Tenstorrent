@@ -1,0 +1,128 @@
+[ 25%] Building CXX object CMakeFiles/turboquant_launcher.dir/host/turboquant_launcher.cpp.o
+[ 50%] Building CXX object CMakeFiles/turboquant_host.dir/host/turboquant_host.cpp.o
+[ 75%] Linking CXX executable turboquant_launcher
+[ 75%] Built target turboquant_launcher
+In file included from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/buffer_distribution_spec.hpp:8,
+                 from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/buffer.hpp:26,
+                 from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_api.hpp:12,
+                 from /mnt/nvme10/joseph_ufl/TurboQuant-Tenstorrent/host/turboquant_host.cpp:20:
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:220:75: warning: ‘using CoreCoord = using CoreCoord = using tt_xy_pair = struct tt::xy_pair’ is deprecated: Use tt::tt_metal::CoreCoord [-Wdeprecated-declarations]
+  220 | [[deprecated("Use tt::tt_metal::corerange_to_cores")]] inline std::vector<CoreCoord> corerange_to_cores(
+      |                                                                           ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:212:7: note: declared here
+  212 | using CoreCoord [[deprecated("Use tt::tt_metal::CoreCoord")]] = tt::tt_metal::CoreCoord;
+      |       ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:226:70: warning: ‘using CoreCoord = using CoreCoord = using tt_xy_pair = struct tt::xy_pair’ is deprecated: Use tt::tt_metal::CoreCoord [-Wdeprecated-declarations]
+  226 | [[deprecated("Use tt::tt_metal::grid_to_cores")]] inline std::vector<CoreCoord> grid_to_cores(
+      |                                                                      ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:212:7: note: declared here
+  212 | using CoreCoord [[deprecated("Use tt::tt_metal::CoreCoord")]] = tt::tt_metal::CoreCoord;
+      |       ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:232:70: warning: ‘using CoreCoord = using CoreCoord = using tt_xy_pair = struct tt::xy_pair’ is deprecated: Use tt::tt_metal::CoreCoord [-Wdeprecated-declarations]
+  232 | [[deprecated("Use tt::tt_metal::grid_to_cores")]] inline std::vector<CoreCoord> grid_to_cores(
+      |                                                                      ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:212:7: note: declared here
+  212 | using CoreCoord [[deprecated("Use tt::tt_metal::CoreCoord")]] = tt::tt_metal::CoreCoord;
+      |       ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:238:80: warning: ‘using CoreCoord = using CoreCoord = using tt_xy_pair = struct tt::xy_pair’ is deprecated: Use tt::tt_metal::CoreCoord [-Wdeprecated-declarations]
+  238 | [[deprecated("Use tt::tt_metal::grid_to_cores_with_noop")]] inline std::vector<CoreCoord> grid_to_cores_with_noop(
+      |                                                                                ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:212:7: note: declared here
+  212 | using CoreCoord [[deprecated("Use tt::tt_metal::CoreCoord")]] = tt::tt_metal::CoreCoord;
+      |       ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:244:80: warning: ‘using CoreCoord = using CoreCoord = using tt_xy_pair = struct tt::xy_pair’ is deprecated: Use tt::tt_metal::CoreCoord [-Wdeprecated-declarations]
+  244 | [[deprecated("Use tt::tt_metal::grid_to_cores_with_noop")]] inline std::vector<CoreCoord> grid_to_cores_with_noop(
+      |                                                                                ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:212:7: note: declared here
+  212 | using CoreCoord [[deprecated("Use tt::tt_metal::CoreCoord")]] = tt::tt_metal::CoreCoord;
+      |       ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:250:100: warning: ‘using CoreRange = class tt::tt_metal::CoreRange’ is deprecated: Use tt::tt_metal::CoreRange [-Wdeprecated-declarations]
+  250 | [[deprecated("Use tt::tt_metal::select_contiguous_range_from_corerangeset")]] inline std::optional<CoreRange>
+      |                                                                                                    ^~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:213:7: note: declared here
+  213 | using CoreRange [[deprecated("Use tt::tt_metal::CoreRange")]] = tt::tt_metal::CoreRange;
+      |       ^~~~~~~~~
+In file included from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/shape.hpp:13,
+                 from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/buffer_distribution_spec.hpp:9:
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/shape_base.hpp:77:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+   77 |     tt::stl::Span<const uint32_t> view() const;
+      |              ^~~~~~~~~~~~~~~~~~~~
+In file included from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/core_coord.hpp:10:
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+In file included from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/program_descriptors.hpp:12,
+                 from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/circular_buffer_config.hpp:18,
+                 from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_api.hpp:23:
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_coord.hpp:59:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+   59 |     tt::stl::SmallVector<size_t> strides_;
+      |              ^~~~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_coord.hpp:80:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+   80 |     tt::stl::Span<const uint32_t> coords() const;
+      |              ^~~~~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_coord.hpp:104:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+  104 |     tt::stl::SmallVector<uint32_t> value_;
+      |              ^~~~~~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+In file included from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/distributed_host_buffer.hpp:9,
+                 from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_command_queue.hpp:27,
+                 from /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/distributed.hpp:15,
+                 from /mnt/nvme10/joseph_ufl/TurboQuant-Tenstorrent/host/turboquant_host.cpp:21:
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_buffer.hpp:54:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+   54 |     tt::stl::Span<std::byte> view_bytes() & noexcept;
+      |              ^~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_buffer.hpp:55:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+   55 |     tt::stl::Span<const std::byte> view_bytes() const& noexcept;
+      |              ^~~~~~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_buffer.hpp:56:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+   56 |     tt::stl::Span<std::byte> view_bytes() && noexcept = delete;
+      |              ^~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_buffer.hpp:57:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+   57 |     tt::stl::Span<const std::byte> view_bytes() const&& noexcept = delete;
+      |              ^~~~~~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_buffer.hpp:77:14: warning: ‘tt::stl’ is deprecated: Use ttsl namespace instead [-Wdeprecated-declarations]
+   77 |     tt::stl::Span<std::byte> view_;
+      |              ^~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/tt_stl/span.hpp:39:56: note: declared here
+   39 | namespace [[deprecated("Use ttsl namespace instead")]] stl {
+      |                                                        ^~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_command_queue.hpp:119:27: warning: ‘ShardDataTransfer’ is deprecated: Use distributed::ShardDataTransfer instead. [-Wdeprecated-declarations]
+  119 |         const std::vector<ShardDataTransfer>& shard_data_transfers,
+      |                           ^~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_command_queue.hpp:83:74: note: declared here
+   83 |     struct [[deprecated("Use distributed::ShardDataTransfer instead.")]] ShardDataTransfer {
+      |                                                                          ^~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_command_queue.hpp:137:27: warning: ‘ShardDataTransfer’ is deprecated: Use distributed::ShardDataTransfer instead. [-Wdeprecated-declarations]
+  137 |         const std::vector<ShardDataTransfer>& shard_data_transfers,
+      |                           ^~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_command_queue.hpp:83:74: note: declared here
+   83 |     struct [[deprecated("Use distributed::ShardDataTransfer instead.")]] ShardDataTransfer {
+      |                                                                          ^~~~~~~~~~~~~~~~~
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_command_queue.hpp:175:94: warning: ‘ShardDataTransfer’ is deprecated: Use distributed::ShardDataTransfer instead. [-Wdeprecated-declarations]
+  175 |     explicit ShardDataTransfer(const MeshCommandQueue::ShardDataTransfer& shard_data_transfer) :
+      |                                                                                              ^
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/mesh_command_queue.hpp:83:74: note: declared here
+   83 |     struct [[deprecated("Use distributed::ShardDataTransfer instead.")]] ShardDataTransfer {
+      |                                                                          ^~~~~~~~~~~~~~~~~
+[100%] Linking CXX executable turboquant_host
+[100%] Built target turboquant_host
