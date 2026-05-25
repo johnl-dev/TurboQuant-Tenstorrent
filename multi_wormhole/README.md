@@ -37,8 +37,8 @@ Mesh-scaled implementation:
 
 - Contiguous vector ranges per chip, or interleaved?
 - Single MeshWorkload spanning all chips, or one per chip in parallel?
-- How does this integrate with the attention dequant kernel that will
-  eventually read QJL output?
+- How does this integrate with the attention dequant kernel
+  (`kernels/dequant_attn_kernel.cpp`) that will eventually read QJL output?
 
 ## Prerequisite
 

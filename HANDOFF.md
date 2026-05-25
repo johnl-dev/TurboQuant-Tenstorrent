@@ -17,7 +17,9 @@ All CP-1 gates pass. Full pipeline runs end-to-end on Wormhole hardware
 
 ## Layout
 
-- `kernels/` -- working Brisc data-movement kernels for Stages 0, 1, 2
+- `kernels/` -- working Brisc data-movement kernels for Stages 0, 1, 2,
+  plus `dequant_attn_kernel.cpp` (downstream consumer, not exercised by
+  CP-1 tests yet)
 - `host/turboquant_host.cpp` -- single-chip orchestration
 - `tests/` -- reference + device validation
 - `reference/turboquant.py` -- Python ground truth
