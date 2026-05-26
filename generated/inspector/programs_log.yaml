@@ -1,169 +1,80 @@
 - program_created:
     id: 0
-    timestamp_ns: 1779749384051445137
+    timestamp_ns: 1779757592221476214
 - program_compile_started:
     id: 0
-    timestamp_ns: 1779749384052297149
+    timestamp_ns: 1779757592222538799
 - program_kernel_compile_finished:
     id: 0
-    timestamp_ns: 1779749384794281933
-    duration_ns: 741984784
+    timestamp_ns: 1779757592229447085
+    duration_ns: 6908286
     watcher_kernel_id: 3
     name: cq_dispatch_subordinate
     path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_dispatch_subordinate/18386209704538731453/
     source: tt_metal/impl/dispatch/kernels/cq_dispatch_subordinate.cpp
 - program_kernel_compile_finished:
     id: 0
-    timestamp_ns: 1779749385810821960
-    duration_ns: 1758524811
-    watcher_kernel_id: 2
-    name: cq_dispatch
-    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_dispatch/10262273362550777157/
-    source: tt_metal/impl/dispatch/kernels/cq_dispatch.cpp
-- program_kernel_compile_finished:
-    id: 0
-    timestamp_ns: 1779749386509697980
-    duration_ns: 2457400831
+    timestamp_ns: 1779757592236560003
+    duration_ns: 14021204
     watcher_kernel_id: 1
     name: cq_prefetch
     path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_prefetch/17973116481447528190/
     source: tt_metal/impl/dispatch/kernels/cq_prefetch.cpp
+- program_kernel_compile_finished:
+    id: 0
+    timestamp_ns: 1779757592241132346
+    duration_ns: 18593547
+    watcher_kernel_id: 2
+    name: cq_dispatch
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_dispatch/10262273362550777157/
+    source: tt_metal/impl/dispatch/kernels/cq_dispatch.cpp
 - program_compile_finished:
     id: 0
-    timestamp_ns: 1779749386513299541
-    duration_ns: 2461002392
+    timestamp_ns: 1779757592244794767
+    duration_ns: 22255968
 - program_created:
     id: 1
-    timestamp_ns: 1779749386538008637
+    timestamp_ns: 1779757592505827308
 - program_created:
     id: 2
-    timestamp_ns: 1779749386540039185
+    timestamp_ns: 1779757592506047251
 - program_destroyed:
     id: 2
-    timestamp_ns: 1779749386540069816
+    timestamp_ns: 1779757592506059801
 - program_compile_started:
     id: 1
-    timestamp_ns: 1779749386540098246
+    timestamp_ns: 1779757592506086072
 - program_kernel_compile_finished:
     id: 1
-    timestamp_ns: 1779749387268403169
-    duration_ns: 728304923
-    watcher_kernel_id: 5
-    name: stage_dump_writer
-    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/5267467619798701858/
-    source: kernels/dataflow/stage_dump_writer.cpp
-- program_kernel_compile_finished:
-    id: 1
-    timestamp_ns: 1779749387328079984
-    duration_ns: 787981738
+    timestamp_ns: 1779757592511890322
+    duration_ns: 5804250
     watcher_kernel_id: 4
-    name: rotation_kernel
-    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/rotation_kernel/2898742065668383759/
-    source: kernels/rotation_kernel.cpp
-- program_compile_finished:
-    id: 1
-    timestamp_ns: 1779749387329750607
-    duration_ns: 789652361
-- program_destroyed:
-    id: 1
-    timestamp_ns: 1779749387335808172
-- program_created:
-    id: 3
-    timestamp_ns: 1779749387336421061
-- program_created:
-    id: 4
-    timestamp_ns: 1779749387336654824
-- program_destroyed:
-    id: 4
-    timestamp_ns: 1779749387336660714
-- program_compile_started:
-    id: 3
-    timestamp_ns: 1779749387336671044
+    name: polarquant_reader
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_reader/3306943506449293461/
+    source: multi_tile/kernels/polarquant_reader.cpp
 - program_kernel_compile_finished:
-    id: 3
-    timestamp_ns: 1779749388021528638
-    duration_ns: 684857594
-    watcher_kernel_id: 7
-    name: stage_dump_writer
-    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/6367079339746696211/
-    source: kernels/dataflow/stage_dump_writer.cpp
-- program_kernel_compile_finished:
-    id: 3
-    timestamp_ns: 1779749388089351368
-    duration_ns: 752680324
+    id: 1
+    timestamp_ns: 1779757592519100912
+    duration_ns: 13014840
     watcher_kernel_id: 6
-    name: polarquant_kernel
-    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_kernel/11394414237666387434/
-    source: kernels/polarquant_kernel.cpp
-- program_compile_finished:
-    id: 3
-    timestamp_ns: 1779749388090043427
-    duration_ns: 753372383
-- program_destroyed:
-    id: 3
-    timestamp_ns: 1779749388092515052
-- program_created:
-    id: 5
-    timestamp_ns: 1779749388092880187
-- program_created:
-    id: 6
-    timestamp_ns: 1779749388093075180
-- program_destroyed:
-    id: 6
-    timestamp_ns: 1779749388093080520
-- program_compile_started:
-    id: 5
-    timestamp_ns: 1779749388093089680
+    name: polarquant_compute
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_compute/4019921384969592455/
+    source: multi_tile/kernels/polarquant_compute.cpp
 - program_kernel_compile_finished:
-    id: 5
-    timestamp_ns: 1779749388093320113
-    duration_ns: 230433
-    watcher_kernel_id: 8
-    name: polarquant_kernel
-    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_kernel/11394414237666387434/
-    source: kernels/polarquant_kernel.cpp
-- program_kernel_compile_finished:
-    id: 5
-    timestamp_ns: 1779749388790750414
-    duration_ns: 697660734
-    watcher_kernel_id: 9
-    name: stage_dump_writer
-    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/1110626334448457008/
-    source: kernels/dataflow/stage_dump_writer.cpp
+    id: 1
+    timestamp_ns: 1779757592520104236
+    duration_ns: 14018164
+    watcher_kernel_id: 5
+    name: polarquant_writer
+    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_writer/18041385399566702237/
+    source: multi_tile/kernels/polarquant_writer.cpp
 - program_compile_finished:
-    id: 5
-    timestamp_ns: 1779749388791227361
-    duration_ns: 698137681
+    id: 1
+    timestamp_ns: 1779757592522409818
+    duration_ns: 16323746
 - program_destroyed:
-    id: 5
-    timestamp_ns: 1779749388793304970
-- program_created:
-    id: 7
-    timestamp_ns: 1779749388793662124
-- program_created:
-    id: 8
-    timestamp_ns: 1779749388793767246
-- program_destroyed:
-    id: 8
-    timestamp_ns: 1779749388793769526
-- program_compile_started:
-    id: 7
-    timestamp_ns: 1779749388793773776
-- program_kernel_compile_finished:
-    id: 7
-    timestamp_ns: 1779749389617943720
-    duration_ns: 824169944
-    watcher_kernel_id: 10
-    name: qjl_kernel
-    path: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/qjl_kernel/13302935338812007575/
-    source: kernels/qjl_kernel.cpp
-- program_compile_finished:
-    id: 7
-    timestamp_ns: 1779749389618724751
-    duration_ns: 824950975
-- program_destroyed:
-    id: 7
-    timestamp_ns: 1779749389623561839
+    id: 1
+    timestamp_ns: 1779757595096426447
 - program_destroyed:
     id: 0
-    timestamp_ns: 1779749389625184012
+    timestamp_ns: 1779757595097839306

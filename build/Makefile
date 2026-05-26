@@ -130,6 +130,32 @@ turboquant_host/fast:
 .PHONY : turboquant_host/fast
 
 #=============================================================================
+# Target rules for targets named turboquant_multi_tile
+
+# Build rule for target.
+turboquant_multi_tile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 turboquant_multi_tile
+.PHONY : turboquant_multi_tile
+
+# fast build rule for target.
+turboquant_multi_tile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_multi_tile.dir/build.make CMakeFiles/turboquant_multi_tile.dir/build
+.PHONY : turboquant_multi_tile/fast
+
+#=============================================================================
+# Target rules for targets named turboquant_multi_tile_pq
+
+# Build rule for target.
+turboquant_multi_tile_pq: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 turboquant_multi_tile_pq
+.PHONY : turboquant_multi_tile_pq
+
+# fast build rule for target.
+turboquant_multi_tile_pq/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_multi_tile_pq.dir/build.make CMakeFiles/turboquant_multi_tile_pq.dir/build
+.PHONY : turboquant_multi_tile_pq/fast
+
+#=============================================================================
 # Target rules for targets named turboquant_launcher
 
 # Build rule for target.
@@ -190,6 +216,54 @@ host/turboquant_launcher.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_launcher.dir/build.make CMakeFiles/turboquant_launcher.dir/host/turboquant_launcher.cpp.s
 .PHONY : host/turboquant_launcher.cpp.s
 
+multi_tile/host/turboquant_multi_tile.o: multi_tile/host/turboquant_multi_tile.cpp.o
+.PHONY : multi_tile/host/turboquant_multi_tile.o
+
+# target to build an object file
+multi_tile/host/turboquant_multi_tile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_multi_tile.dir/build.make CMakeFiles/turboquant_multi_tile.dir/multi_tile/host/turboquant_multi_tile.cpp.o
+.PHONY : multi_tile/host/turboquant_multi_tile.cpp.o
+
+multi_tile/host/turboquant_multi_tile.i: multi_tile/host/turboquant_multi_tile.cpp.i
+.PHONY : multi_tile/host/turboquant_multi_tile.i
+
+# target to preprocess a source file
+multi_tile/host/turboquant_multi_tile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_multi_tile.dir/build.make CMakeFiles/turboquant_multi_tile.dir/multi_tile/host/turboquant_multi_tile.cpp.i
+.PHONY : multi_tile/host/turboquant_multi_tile.cpp.i
+
+multi_tile/host/turboquant_multi_tile.s: multi_tile/host/turboquant_multi_tile.cpp.s
+.PHONY : multi_tile/host/turboquant_multi_tile.s
+
+# target to generate assembly for a file
+multi_tile/host/turboquant_multi_tile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_multi_tile.dir/build.make CMakeFiles/turboquant_multi_tile.dir/multi_tile/host/turboquant_multi_tile.cpp.s
+.PHONY : multi_tile/host/turboquant_multi_tile.cpp.s
+
+multi_tile/host/turboquant_multi_tile_pq.o: multi_tile/host/turboquant_multi_tile_pq.cpp.o
+.PHONY : multi_tile/host/turboquant_multi_tile_pq.o
+
+# target to build an object file
+multi_tile/host/turboquant_multi_tile_pq.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_multi_tile_pq.dir/build.make CMakeFiles/turboquant_multi_tile_pq.dir/multi_tile/host/turboquant_multi_tile_pq.cpp.o
+.PHONY : multi_tile/host/turboquant_multi_tile_pq.cpp.o
+
+multi_tile/host/turboquant_multi_tile_pq.i: multi_tile/host/turboquant_multi_tile_pq.cpp.i
+.PHONY : multi_tile/host/turboquant_multi_tile_pq.i
+
+# target to preprocess a source file
+multi_tile/host/turboquant_multi_tile_pq.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_multi_tile_pq.dir/build.make CMakeFiles/turboquant_multi_tile_pq.dir/multi_tile/host/turboquant_multi_tile_pq.cpp.i
+.PHONY : multi_tile/host/turboquant_multi_tile_pq.cpp.i
+
+multi_tile/host/turboquant_multi_tile_pq.s: multi_tile/host/turboquant_multi_tile_pq.cpp.s
+.PHONY : multi_tile/host/turboquant_multi_tile_pq.s
+
+# target to generate assembly for a file
+multi_tile/host/turboquant_multi_tile_pq.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/turboquant_multi_tile_pq.dir/build.make CMakeFiles/turboquant_multi_tile_pq.dir/multi_tile/host/turboquant_multi_tile_pq.cpp.s
+.PHONY : multi_tile/host/turboquant_multi_tile_pq.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -200,12 +274,20 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... turboquant_host"
 	@echo "... turboquant_launcher"
+	@echo "... turboquant_multi_tile"
+	@echo "... turboquant_multi_tile_pq"
 	@echo "... host/turboquant_host.o"
 	@echo "... host/turboquant_host.i"
 	@echo "... host/turboquant_host.s"
 	@echo "... host/turboquant_launcher.o"
 	@echo "... host/turboquant_launcher.i"
 	@echo "... host/turboquant_launcher.s"
+	@echo "... multi_tile/host/turboquant_multi_tile.o"
+	@echo "... multi_tile/host/turboquant_multi_tile.i"
+	@echo "... multi_tile/host/turboquant_multi_tile.s"
+	@echo "... multi_tile/host/turboquant_multi_tile_pq.o"
+	@echo "... multi_tile/host/turboquant_multi_tile_pq.i"
+	@echo "... multi_tile/host/turboquant_multi_tile_pq.s"
 .PHONY : help
 
 

@@ -103,6 +103,7 @@ CMakeFiles/turboquant_host.dir/host/turboquant_host.cpp.o
  /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/experimental/fabric/mesh_graph_descriptor.hpp
  /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/experimental/fabric/routing_table_generator.hpp
  /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/experimental/sockets/mesh_socket.hpp
+ /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/hal.hpp
  /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/hal_types.hpp
  /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_api.hpp
  /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_buffer.hpp

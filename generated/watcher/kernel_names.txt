@@ -2,10 +2,6 @@
 1: tt_metal/impl/dispatch/kernels/cq_prefetch.cpp
 2: tt_metal/impl/dispatch/kernels/cq_dispatch.cpp
 3: tt_metal/impl/dispatch/kernels/cq_dispatch_subordinate.cpp
-4: kernels/rotation_kernel.cpp
-5: kernels/dataflow/stage_dump_writer.cpp
-6: kernels/polarquant_kernel.cpp
-7: kernels/dataflow/stage_dump_writer.cpp
-8: kernels/polarquant_kernel.cpp
-9: kernels/dataflow/stage_dump_writer.cpp
-10: kernels/qjl_kernel.cpp
+4: multi_tile/kernels/polarquant_reader.cpp
+5: multi_tile/kernels/polarquant_writer.cpp
+6: multi_tile/kernels/polarquant_compute.cpp

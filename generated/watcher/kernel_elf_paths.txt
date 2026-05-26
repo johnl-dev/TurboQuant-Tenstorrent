@@ -1,11 +1,7 @@
 0: blank
-3: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_dispatch_subordinate/18386209704538731453//ncrisc/ncrisc.elf
 2: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_dispatch/10262273362550777157//brisc/brisc.elf
 1: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_prefetch/17973116481447528190//brisc/brisc.elf
-5: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/5267467619798701858//ncrisc/ncrisc.elf
-4: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/rotation_kernel/2898742065668383759//brisc/brisc.elf
-7: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/6367079339746696211//ncrisc/ncrisc.elf
-6: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_kernel/11394414237666387434//brisc/brisc.elf
-9: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/stage_dump_writer/1110626334448457008//ncrisc/ncrisc.elf
-8: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_kernel/11394414237666387434//brisc/brisc.elf
-10: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/qjl_kernel/13302935338812007575//brisc/brisc.elf
+3: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/cq_dispatch_subordinate/18386209704538731453//ncrisc/ncrisc.elf
+6: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_compute/4019921384969592455//trisc0/trisc0.elf:/mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_compute/4019921384969592455//trisc1/trisc1.elf:/mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_compute/4019921384969592455//trisc2/trisc2.elf
+5: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_writer/18041385399566702237//ncrisc/ncrisc.elf
+4: /mnt/nvme10/joseph_ufl/.cache/tt-metal-cache/10395188600912699556/kernels/polarquant_reader/3306943506449293461//brisc/brisc.elf

@@ -102,6 +102,7 @@ CMakeFiles/turboquant_host.dir/host/turboquant_host.cpp.o: /mnt/nvme10/joseph_uf
   /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/experimental/fabric/mesh_graph_descriptor.hpp \
   /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/experimental/fabric/routing_table_generator.hpp \
   /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/experimental/sockets/mesh_socket.hpp \
+  /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/hal.hpp \
   /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/hal_types.hpp \
   /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_api.hpp \
   /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/host_buffer.hpp \
@@ -858,8 +859,6 @@ CMakeFiles/turboquant_host.dir/host/turboquant_host.cpp.o: /mnt/nvme10/joseph_uf
 
 /usr/include/c++/12/bits/vector.tcc:
 
-/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/tile.hpp:
-
 /usr/include/x86_64-linux-gnu/c++/12/bits/error_constants.h:
 
 /usr/include/x86_64-linux-gnu/c++/12/bits/cpu_defines.h:
@@ -1210,6 +1209,10 @@ CMakeFiles/turboquant_host.dir/host/turboquant_host.cpp.o: /mnt/nvme10/joseph_uf
 
 /usr/include/c++/12/bits/stl_multimap.h:
 
+/usr/include/c++/12/bits/uses_allocator.h:
+
+/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/spdlog/details/log_msg_buffer-inl.h:
+
 /usr/include/c++/12/bits/ostream_insert.h:
 
 /usr/include/c++/12/cstdint:
@@ -1283,6 +1286,8 @@ CMakeFiles/turboquant_host.dir/host/turboquant_host.cpp.o: /mnt/nvme10/joseph_uf
 /usr/include/c++/12/bits/parse_numbers.h:
 
 /usr/include/c++/12/bits/streambuf.tcc:
+
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/tile.hpp:
 
 /usr/include/alloca.h:
 
@@ -1420,6 +1425,8 @@ CMakeFiles/turboquant_host.dir/host/turboquant_host.cpp.o: /mnt/nvme10/joseph_uf
 
 /mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/maybe_remote.hpp:
 
+/mnt/nvme10/joseph_ufl/tt-metal/tt_metal/api/tt-metalium/hal.hpp:
+
 /usr/include/c++/12/bits/locale_classes.h:
 
 /mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/enchantum/details/optional.hpp:
@@ -1511,10 +1518,6 @@ CMakeFiles/turboquant_host.dir/host/turboquant_host.cpp.o: /mnt/nvme10/joseph_uf
 /usr/include/pthread.h:
 
 /usr/include/c++/12/bits/stl_iterator_base_funcs.h:
-
-/mnt/nvme10/joseph_ufl/tt-metal/build_Release/include/spdlog/details/log_msg_buffer-inl.h:
-
-/usr/include/c++/12/bits/uses_allocator.h:
 
 /usr/include/c++/12/bits/stl_map.h:
 
