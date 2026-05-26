@@ -6,7 +6,7 @@ TurboQuant compresses 128-dimensional bf16 vectors into 18-byte records (a 14× 
 
 ---
 
-## Headline performance
+## Performance
 
 End-to-end pipeline at **N = 1,048,576 vectors** on a single Wormhole B0 chip:
 
@@ -29,7 +29,7 @@ All numbers are warm-cache, strong scaling (N held constant, cores varied). Full
 
 ---
 
-## What's in the box
+## Directory Organization
 
 ```
 TurboQuant-Tenstorrent/
