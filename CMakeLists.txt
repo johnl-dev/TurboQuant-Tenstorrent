@@ -161,6 +161,86 @@ set_target_properties(turboquant_multi_tile_pq PROPERTIES
 )
 
 # ---------------------------------------------------------------------------
+# Multi-tile Stage 2a (inverse rotation) host
+# ---------------------------------------------------------------------------
+
+add_executable(turboquant_multi_tile_ir multi_tile/host/turboquant_multi_tile_ir.cpp)
+
+target_compile_definitions(turboquant_multi_tile_ir PRIVATE
+    TQ_DIM=128
+    TQ_BITS=4
+    TQ_QJL_DIM=128
+    HOST_BUILD
+    FMT_HEADER_ONLY
+)
+
+target_include_directories(turboquant_multi_tile_ir PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/multi_tile/include
+    ${TT_METAL_INCLUDES}
+)
+
+target_link_libraries(turboquant_multi_tile_ir PRIVATE
+    ${TT_METAL_LIB}
+    ${TT_OPTIONAL_LIBS}
+    pthread dl
+)
+
+set_target_properties(turboquant_multi_tile_ir PROPERTIES
+    BUILD_RPATH   ${TT_LIB_DIR}
+    INSTALL_RPATH ${TT_LIB_DIR}
+)
+
+# ---------------------------------------------------------------------------
+# Multi-tile Stage 2b1 (residual) host
+# ---------------------------------------------------------------------------
+
+add_executable(turboquant_multi_tile_resid multi_tile/host/turboquant_multi_tile_resid.cpp)
+target_compile_definitions(turboquant_multi_tile_resid PRIVATE
+    TQ_DIM=128 TQ_BITS=4 TQ_QJL_DIM=128 HOST_BUILD FMT_HEADER_ONLY)
+target_include_directories(turboquant_multi_tile_resid PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/multi_tile/include
+    ${TT_METAL_INCLUDES})
+target_link_libraries(turboquant_multi_tile_resid PRIVATE
+    ${TT_METAL_LIB} ${TT_OPTIONAL_LIBS} pthread dl)
+set_target_properties(turboquant_multi_tile_resid PROPERTIES
+    BUILD_RPATH ${TT_LIB_DIR} INSTALL_RPATH ${TT_LIB_DIR})
+
+# ---------------------------------------------------------------------------
+# Multi-tile Stage 2b2 (QJL sign projection) host
+# ---------------------------------------------------------------------------
+
+add_executable(turboquant_multi_tile_proj multi_tile/host/turboquant_multi_tile_proj.cpp)
+target_compile_definitions(turboquant_multi_tile_proj PRIVATE
+    TQ_DIM=128 TQ_BITS=4 TQ_QJL_DIM=128 TQ_QJL_SEED=0xCAFEBABEu
+    HOST_BUILD FMT_HEADER_ONLY)
+target_include_directories(turboquant_multi_tile_proj PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/multi_tile/include
+    ${TT_METAL_INCLUDES})
+target_link_libraries(turboquant_multi_tile_proj PRIVATE
+    ${TT_METAL_LIB} ${TT_OPTIONAL_LIBS} pthread dl)
+set_target_properties(turboquant_multi_tile_proj PROPERTIES
+    BUILD_RPATH ${TT_LIB_DIR} INSTALL_RPATH ${TT_LIB_DIR})
+
+# ---------------------------------------------------------------------------
+# Multi-tile Stage 2c (r_norm) host
+# ---------------------------------------------------------------------------
+
+add_executable(turboquant_multi_tile_rnorm multi_tile/host/turboquant_multi_tile_rnorm.cpp)
+target_compile_definitions(turboquant_multi_tile_rnorm PRIVATE
+    TQ_DIM=128 TQ_BITS=4 TQ_QJL_DIM=128 HOST_BUILD FMT_HEADER_ONLY)
+target_include_directories(turboquant_multi_tile_rnorm PRIVATE
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/multi_tile/include
+    ${TT_METAL_INCLUDES})
+target_link_libraries(turboquant_multi_tile_rnorm PRIVATE
+    ${TT_METAL_LIB} ${TT_OPTIONAL_LIBS} pthread dl)
+set_target_properties(turboquant_multi_tile_rnorm PROPERTIES
+    BUILD_RPATH ${TT_LIB_DIR} INSTALL_RPATH ${TT_LIB_DIR})
+
+# ---------------------------------------------------------------------------
 # Launcher binary (no TT-Metal dependency)
 # ---------------------------------------------------------------------------
 
