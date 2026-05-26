@@ -1,7 +1,0 @@
-0: blank
-1: tt_metal/impl/dispatch/kernels/cq_prefetch.cpp
-2: tt_metal/impl/dispatch/kernels/cq_dispatch.cpp
-3: tt_metal/impl/dispatch/kernels/cq_dispatch_subordinate.cpp
-4: multi_tile/kernels/polarquant_reader.cpp
-5: multi_tile/kernels/polarquant_writer.cpp
-6: multi_tile/kernels/polarquant_compute.cpp
