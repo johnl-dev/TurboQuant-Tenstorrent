@@ -243,11 +243,13 @@ static std::vector<uint8_t> run_isolated_stage(
 int main(int argc, char* argv[]) {
     uint32_t num_vectors = 64u;
     std::string mode = "full";
+    std::string chips_str = "6";
 
     for (int i = 1; i < argc; ++i) {
         std::string a(argv[i]);
         if      (a == "--num-vectors" && i + 1 < argc) num_vectors = std::atoi(argv[++i]);
         else if (a == "--mode"        && i + 1 < argc) mode        = argv[++i];
+        else if (a == "--chips"       && i + 1 < argc) chips_str   = argv[++i];
     }
 
     std::cout << "[TurboQuant] d=" << kD << " b=" << kB
@@ -260,15 +262,51 @@ int main(int argc, char* argv[]) {
             input_bf16[i * kD + j] = float_to_bf16(test_vecs[i][j]);
     write_bin("dump_input.bin", input_bf16.data(), input_bf16.size() * 2);
 
-    auto mesh_dev = distributed::MeshDevice::create_unit_mesh(6);
-    distributed::MeshCommandQueue& cq = mesh_dev->mesh_command_queue();
-    distributed::MeshCoordinateRange dev_range(mesh_dev->shape());
+    // Parse chips list (comma-separated ints)
+    auto parse_chips = [&](const std::string& s) {
+        std::vector<int> out;
+        std::string tmp;
+        for (char c : s) {
+            if (c == ',') { if (!tmp.empty()) { out.push_back(std::stoi(tmp)); tmp.clear(); } }
+            else tmp.push_back(c);
+        }
+        if (!tmp.empty()) out.push_back(std::stoi(tmp));
+        if (out.empty()) out.push_back(6);
+        return out;
+    };
+
+    std::vector<int> chips = parse_chips(chips_str);
+    std::vector<std::shared_ptr<distributed::MeshDevice>> mesh_devices;
+    mesh_devices.reserve(chips.size());
+    for (int c : chips) mesh_devices.push_back(distributed::MeshDevice::create_unit_mesh(c));
+
+    // For convenience, use the first device's queue/shape for single-device operations
+    distributed::MeshCommandQueue& cq = mesh_devices[0]->mesh_command_queue();
+    distributed::MeshCoordinateRange dev_range(mesh_devices[0]->shape());
 
     auto t0 = std::chrono::high_resolution_clock::now();
 
-    auto input_buf = make_mesh_buf(mesh_dev.get(), num_vectors * kD * 2, kD * 2);
-    distributed::EnqueueWriteMeshBuffer(cq, input_buf, input_bf16, /*blocking=*/true);
-    const uint64_t src_addr = input_buf->address();
+    // Partition input across devices and upload per-device buffers
+    const size_t num_devices = mesh_devices.size();
+    std::vector<std::shared_ptr<distributed::MeshBuffer>> input_bufs(num_devices);
+    std::vector<uint64_t> src_addrs(num_devices);
+    std::vector<uint32_t> vectors_per_device(num_devices, 0u);
+    for (size_t i = 0; i < num_devices; ++i) vectors_per_device[i] = static_cast<uint32_t>(num_vectors / num_devices);
+    // distribute remainder to last device
+    for (size_t r = 0; r < static_cast<size_t>(num_vectors % num_devices); ++r) vectors_per_device[num_devices - 1 - r]++;
+
+    size_t vec_offset = 0;
+    for (size_t i = 0; i < num_devices; ++i) {
+        uint32_t nv = vectors_per_device[i];
+        uint32_t bytes = nv * kD * 2;
+        input_bufs[i] = make_mesh_buf(mesh_devices[i].get(), bytes, kD * 2);
+        std::vector<uint16_t> slice;
+        slice.reserve(static_cast<size_t>(nv) * kD);
+        slice.insert(slice.end(), input_bf16.begin() + vec_offset * kD, input_bf16.begin() + (vec_offset + nv) * kD);
+        distributed::EnqueueWriteMeshBuffer(mesh_devices[i]->mesh_command_queue(), input_bufs[i], slice, /*blocking=*/true);
+        src_addrs[i] = input_bufs[i]->address();
+        vec_offset += nv;
+    }
 
     const uint32_t bytes_fp16 = kN * kD * 2;
     const uint32_t bytes_pq   = kN * turboquant::kPolarQuantBytes;
@@ -276,33 +314,44 @@ int main(int argc, char* argv[]) {
 
     std::cout << "[Stage 0] rotation_kernel -> dump_rotated.bin\n";
     {
-        auto raw = run_isolated_stage(mesh_dev.get(), cq, dev_range,
-                                      src_addr, num_vectors, 0,
-                                      tt::CB::c_in1, bytes_fp16);
-        write_bin("dump_rotated.bin", raw.data(), raw.size());
+        // Run stage 0 on each device for its slice and concatenate outputs
+        std::vector<uint8_t> combined;
+        for (size_t i = 0; i < num_devices; ++i) {
+            auto& dev = mesh_devices[i];
+            auto& q   = dev->mesh_command_queue();
+            distributed::MeshCoordinateRange range(dev->shape());
+            auto out = run_isolated_stage(dev.get(), q, range,
+                                          src_addrs[i], vectors_per_device[i], 0,
+                                          tt::CB::c_in1, bytes_fp16);
+            combined.insert(combined.end(), out.begin(), out.end());
+        }
+        write_bin("dump_rotated.bin", combined.data(), combined.size());
     }
 
     // Upload rotated vectors back to DRAM for polarquant to read
     auto rot_raw = read_bin("dump_rotated.bin");
-    auto rot_buf = make_mesh_buf(mesh_dev.get(), rot_raw.size(), kD * 2);
-    distributed::EnqueueWriteMeshBuffer(cq, rot_buf,
+    // Upload rotated vectors back to DRAM for polarquant to read
+    auto rot_buf = make_mesh_buf(mesh_devices[0].get(), rot_raw.size(), kD * 2);
+    distributed::EnqueueWriteMeshBuffer(mesh_devices[0]->mesh_command_queue(), rot_buf,
         std::vector<uint16_t>(reinterpret_cast<uint16_t*>(rot_raw.data()),
                               reinterpret_cast<uint16_t*>(rot_raw.data() + rot_raw.size())),
         /*blocking=*/true);
     const uint64_t rot_addr = rot_buf->address();
     std::cout << "\n[Stage 1a] polarquant_kernel -> dump_quant_indices.bin\n";
     {
-        auto raw = run_isolated_stage(mesh_dev.get(), cq, dev_range,
-                                      rot_addr, num_vectors, 1,
-                                      tt::CB::c_in2, bytes_pq);
+        auto raw = run_isolated_stage(mesh_devices[0].get(), mesh_devices[0]->mesh_command_queue(),
+                          distributed::MeshCoordinateRange(mesh_devices[0]->shape()),
+                          rot_addr, num_vectors, 1,
+                          tt::CB::c_in2, bytes_pq);
         write_bin("dump_quant_indices.bin", raw.data(), raw.size());
     }
 
     std::cout << "\n[Stage 1b] polarquant_kernel -> dump_quant_centroids.bin\n";
     {
-        auto raw = run_isolated_stage(mesh_dev.get(), cq, dev_range,
-                                      rot_addr, num_vectors, 1,
-                                      tt::CB::c_in3, bytes_fp16);
+        auto raw = run_isolated_stage(mesh_devices[0].get(), mesh_devices[0]->mesh_command_queue(),
+                          distributed::MeshCoordinateRange(mesh_devices[0]->shape()),
+                          rot_addr, num_vectors, 1,
+                          tt::CB::c_in3, bytes_fp16);
         write_bin("dump_quant_centroids.bin", raw.data(), raw.size());
     }
 
@@ -310,8 +359,8 @@ int main(int argc, char* argv[]) {
     {
         // Upload centroids back to DRAM for QJL to read
         auto cent_raw = read_bin("dump_quant_centroids.bin");
-        auto cent_buf = make_mesh_buf(mesh_dev.get(), cent_raw.size(), kD * 2);
-        distributed::EnqueueWriteMeshBuffer(cq, cent_buf,
+        auto cent_buf = make_mesh_buf(mesh_devices[0].get(), cent_raw.size(), kD * 2);
+        distributed::EnqueueWriteMeshBuffer(mesh_devices[0]->mesh_command_queue(), cent_buf,
             std::vector<uint16_t>(reinterpret_cast<uint16_t*>(cent_raw.data()),
                                   reinterpret_cast<uint16_t*>(cent_raw.data() + cent_raw.size())),
             /*blocking=*/true);
@@ -324,7 +373,7 @@ int main(int argc, char* argv[]) {
 
         const uint32_t kRecBytesPadded = (kRecBytes + kDramAlign - 1) & ~(kDramAlign - 1);
 
-        auto qjl_out_buf = make_mesh_buf(mesh_dev.get(),
+        auto qjl_out_buf = make_mesh_buf(mesh_devices[0].get(),
 
                                          num_vectors * kRecBytesPadded,
 
@@ -335,7 +384,7 @@ int main(int argc, char* argv[]) {
         const uint32_t cores_x = 8u, cores_y = 4u;
         Program prog2 = CreateProgram();
         // Use device compute grid, skip row 0 col 0 (dispatch)
-        auto grid = mesh_dev->compute_with_storage_grid_size();
+        auto grid = mesh_devices[0]->compute_with_storage_grid_size();
         // Use rows 0..cores_y-1, cols 1..cores_x (skip col 0 dispatch)
         tt::tt_metal::CoreRange qjl_range(
             tt::tt_metal::CoreCoord{0, 2},
@@ -373,11 +422,13 @@ int main(int argc, char* argv[]) {
             for (uint32_t cx = 0u; cx < cores_x; ++cx) {
                 uint32_t vi = cy * cores_x + cx;
                 tt::tt_metal::CoreCoord c{cx, cy + 2};
-                SetRuntimeArgs(prog2, qjl_k, c,
-                    {static_cast<uint32_t>(src_addr), 1u, kD, 1u,
-                     static_cast<uint32_t>(cent_addr), vi,
-                     static_cast<uint32_t>(qjl_out_addr),
-                     kRecBytesPadded});
+                std::vector<uint32_t> qjl_args = {
+                    static_cast<uint32_t>(src_addrs[0]), 1u, kD, 1u,
+                    static_cast<uint32_t>(cent_addr), vi,
+                    static_cast<uint32_t>(qjl_out_addr),
+                    kRecBytesPadded
+                };
+                SetRuntimeArgs(prog2, qjl_k, c, qjl_args);
             }
         }
 
@@ -387,7 +438,7 @@ int main(int argc, char* argv[]) {
             distributed::MeshCoordinate{0, 0},
             distributed::MeshCoordinate{0, 0});
         wl2.add_program(local_range, std::move(prog2));
-        distributed::EnqueueMeshWorkload(cq, wl2, /*blocking=*/true);
+        distributed::EnqueueMeshWorkload(mesh_devices[0]->mesh_command_queue(), wl2, /*blocking=*/true);
 
         // Read QJL output (deinterleave padding)
 
@@ -445,7 +496,7 @@ int main(int argc, char* argv[]) {
     auto t1 = std::chrono::high_resolution_clock::now();
     double ms = std::chrono::duration<double, std::milli>(t1 - t0).count();
 
-    mesh_dev->close();
+    for (auto &d : mesh_devices) d->close();
 
     std::cout << "\nTotal time: " << std::fixed << std::setprecision(1)
               << ms << " ms\n\n"
